@@ -1,0 +1,34 @@
+#! python3
+# Merge all .pdf files in the current directory
+
+import PyPDF2, os, time
+
+# Time string for output file name
+timestr = time.strftime("%Y%m") 
+
+# Remove Merged file if exists
+if os.path.exists(timestr+'-Merge.pdf'):
+    os.remove(timestr+'-Merge.pdf')
+
+# Get all the .pdf files in current directory
+pdfFiles = []
+for filename in os.listdir('.'):
+    if filename.endswith('.pdf'):
+        pdfFiles.append(filename)
+pdfFiles.sort(key = str.casefold)
+pdfWriter = PyPDF2.PdfFileWriter()
+
+# Loop through all the pdf files
+for filename in pdfFiles:
+    pdfFileObj = open (filename, 'rb')
+    pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
+
+    # Loop through all the pages and add them
+    for pageNum in range(pdfReader.numPages):
+        pageObj = pdfReader.getPage(pageNum)
+        pdfWriter.addPage(pageObj)
+
+# Write the merged PDF File
+pdfOutput = open (timestr+'-Merge.pdf','wb')
+pdfWriter.write(pdfOutput)
+pdfOutput.close()
