@@ -2,7 +2,7 @@
 # Merge all .pdf files in the current directory
 
 import os, sys
-from PyPDF2 import PdfFileReader, PdfFileMerger
+from PyPDF2 import PdfReader, PdfMerger
 from reportlab.platypus import SimpleDocTemplate, Paragraph
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import inch
@@ -28,21 +28,21 @@ for filename in os.listdir('.'):
     if filename.endswith('.pdf'):
         pdfFiles.append(filename)
 pdfFiles.sort(key = str.casefold)
-pdfMerger = PdfFileMerger()
+pdfMerger = PdfMerger()
 
 # Loop through all the pdf files
 for filename in pdfFiles:
-    pdfMerger.append(filename, import_bookmarks=False,bookmark=str(filename))
+    pdfMerger.append(filename, import_outline=False,outline_item=str(filename))
 
 pdfMerger.write(OutputFile)
 
 # Read newly created PDF to extract bookmarks
-pdffile = PdfFileReader(OutputFile)
-outlines = pdffile.outlines
+pdffile = PdfReader(OutputFile)
+outline = pdffile.outline
 
 # # Create Text File for fun
 # f = open('bookmarks.txt',"w+")
-# for x in outlines:
+# for x in outline:
 #     f.write('{:.<60} {:d}'.format(x.get("/Title"),x.get("/Page")+2)+'\n')
 # f.close()
 
@@ -66,7 +66,7 @@ doc = SimpleDocTemplate(
 
 text_content = ""
 
-for x in outlines:
+for x in outline:
     text_content += '{:.<70} {:d}'.format(x.get("/Title"),x.get("/Page")+2)
     text_content += '<br/>'
                     
@@ -79,9 +79,9 @@ doc.build(
 )
 
 # Merge TOC and Merged PDF
-pdfMerger = PdfFileMerger()
-pdfMerger.merge(0,'bookmarks.pdf',import_bookmarks=False)
-pdfMerger.append(PdfFileReader(OutputFile))
+pdfMerger = PdfMerger()
+pdfMerger.merge(0,'bookmarks.pdf',import_outline=False)
+pdfMerger.append(PdfReader(OutputFile))
 pdfMerger.write(OutputFile)
 pdfMerger.close()
 
