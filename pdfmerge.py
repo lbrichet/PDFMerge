@@ -1,7 +1,7 @@
 #! python3
 # Merge all .pdf files in the current directory
 
-import os, sys
+import os, sys, webbrowser
 from PyPDF2 import PdfReader, PdfMerger
 from reportlab.platypus import SimpleDocTemplate, Paragraph
 from reportlab.lib.styles import ParagraphStyle
@@ -89,5 +89,5 @@ pdfMerger.close()
 if os.path.exists('bookmarks.pdf'):
     os.remove('bookmarks.pdf')
 
-# Open PDF file
-os.startfile(OutputFile)
+# Open PDF file (change to webbrowser to have linux compatibility)
+webbrowser.open_new(OutputFile)
