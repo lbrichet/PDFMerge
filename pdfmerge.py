@@ -11,10 +11,10 @@ from reportlab.lib.pagesizes import letter
 # Get output filename from arguments
 if len(sys.argv) <= 1:
     print('Missing Argument : pdfmerge.py [OutputFile.pdf]')
-    exit(1)
+    sys.exit(1)
 if sys.argv[1][-4:] != '.pdf':
     print('Output file extension must be .pdf')
-    exit(1)
+    sys.exit(1)
 
 OutputFile = sys.argv[1]
 
