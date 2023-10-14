@@ -5,7 +5,7 @@ Merge all pdf files in a directory and create one big pdf file with a Table of C
 
 **Usage:**
 * Executable :
-  * [Download Linux Binary](https://github.com/tibuski/PDFMerge/blob/master/bin/pdfmerge.bin)
+  * [Download Linux Binary](https://github.com/tibuski/PDFMerge/blob/master/pdfmerge.bin)
   * Run 
     ```sh
     ./pdfmerge.bin [OutputFile.pdf]
