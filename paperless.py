@@ -1,12 +1,20 @@
+# curl -H 'Authorization: Token 5b6ef986ffe805aa0a2174ed644b12d20ff0e148' https://paperless.brichet.be/api/documents/?tags__name__iexact=Q3%20-%202023
+
 import requests
 import os
 
-# Define the API endpoint and your specific tag
+# Define the API endpoint, your specific tag, and your authentication token
 api_url = "https://paperless.brichet.be/api/documents/"
 tag_to_query = "Q3 - 2023"
+auth_token = "5b6ef986ffe805aa0a2174ed644b12d20ff0e148"  # Replace with your actual token
+
+# Set up the headers with the authentication token
+headers = {
+    'Authorization': f'Token {auth_token}',
+}
 
 # Make a GET request to the API to retrieve documents with the specific tag
-response = requests.get(api_url, params={'tags__name__iexact': tag_to_query}, timeout=10)
+response = requests.get(api_url, params={'tags__name__iexact': tag_to_query}, headers=headers)
 
 # Check if the request was successful
 if response.status_code == 200:
