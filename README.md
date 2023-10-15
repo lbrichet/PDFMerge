@@ -16,7 +16,7 @@ Merge all pdf files in a directory and create one big pdf file with a Table of C
   ```sh
   git clone https://github.com/tibuski/PDFMerge
   cd PDFMerge
-  python -m venv .
+  python3 -m venv .
   source bin/activate
   python3 -m pip install -r requirements.txt
   python3 ./pdfmerge.py "OutputFile.pdf" ["Paperless Tag Between Quotes"]
