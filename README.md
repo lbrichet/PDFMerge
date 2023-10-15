@@ -3,7 +3,7 @@
 Really simple PDF merger in Python.
 Merge all pdf files in a directory and create one big pdf file with a Table of Content with file names as first page.
 
-**Usage:**
+## Usage
 * Executable :
   * [Download Linux Binary](https://github.com/tibuski/PDFMerge/blob/master/pdfmerge.bin)
   * Run 
@@ -13,7 +13,7 @@ Merge all pdf files in a directory and create one big pdf file with a Table of C
 
 
 * Python :
-  ```sh
+  ```bash
   git clone https://github.com/tibuski/PDFMerge
   cd PDFMerge
   python3 -m venv .
@@ -21,3 +21,9 @@ Merge all pdf files in a directory and create one big pdf file with a Table of C
   python3 -m pip install -r requirments.txt
   python3 ./pdfmerge.py
   ```
+
+## Compile Executable
+```bash
+python -m pip install nuitka
+python -m nuitka --onefile pdfmerge.py
+```

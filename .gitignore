@@ -2,4 +2,7 @@
 /lib
 /lib64
 /include
+/pdfmerge.build
+/pdfmerge.dist
+/pdfmerge.onefile-build
 pyvenv.cfg
