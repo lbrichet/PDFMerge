@@ -18,6 +18,6 @@ Merge all pdf files in a directory and create one big pdf file with a Table of C
   cd PDFMerge
   python3 -m venv .
   source bin/activate
-  python3 -m pip install -r requirements.txt
+  python3 -m pip install -r requirments.txt
   python3 ./pdfmerge.py "OutputFile.pdf" ["Paperless Tag Between Quotes"]
   ```
