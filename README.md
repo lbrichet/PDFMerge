@@ -8,11 +8,16 @@ Merge all pdf files in a directory and create one big pdf file with a Table of C
   * [Download Linux Binary](https://github.com/tibuski/PDFMerge/blob/master/pdfmerge.bin)
   * Run 
     ```sh
-    ./pdfmerge.bin [OutputFile.pdf]
+    ./pdfmerge.bin "OutputFile.pdf" ["Paperless Tag Between Quotes"]
     ```
 
 
 * Python :
   ```sh
-  python3 ./pdfmerge.py [OutputFile.pdf]
+  git clone https://github.com/tibuski/PDFMerge
+  cd PDFMerge
+  python -m venv .
+  source bin/activate
+  python3 -m pip install -r requirements.txt
+  python3 ./pdfmerge.py "OutputFile.pdf" ["Paperless Tag Between Quotes"]
   ```
